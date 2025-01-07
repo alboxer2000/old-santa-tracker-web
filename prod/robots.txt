@@ -1,3 +1,0 @@
-Disallow: /upgrade.html
-Disallow: /cast.html
-Disallow: /error.html
