@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+body {
+  background: white;
+}
+  </style>
+</head>
+<body>
+
+<ul id="listing"></ul>
+
+<script type="module">
+  import api from '../../src/scene/api.js';
+  import scenes from '../../scenes.js';
+
+  api.ready(async (manager) => {
+    const listing = document.getElementById('listing');
+    const keys = Object.keys(scenes).sort();
+
+    const handler = (sceneName, ev) => {
+      ev.preventDefault();
+      manager.route(sceneName);
+    };
+
+    keys.forEach((sceneName) => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+
+      a.href = `/${sceneName}.html`;
+      a.textContent = sceneName;
+      a.addEventListener('click', handler.bind(null, sceneName));
+
+      if (scenes[sceneName].video) {
+        li.appendChild(document.createTextNode('video '));
+      }
+      li.appendChild(a);
+
+      listing.appendChild(li);
+    });
+  });
+
+</script>
+
+</body>
+</html>
