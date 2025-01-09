@@ -1,0 +1,27 @@
+@import '../../styles/shared';
+
+:host {
+  z-index: $index-orientation;  // places this element above the blur
+}
+
+main {
+  text-align: center;
+}
+
+p {
+  font-family: 'Roboto', Arial, Sans-Serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+}
+
+svg {
+  height: 200px;
+  width: 200px;
+}
+
+:host([orientation="portrait"]) {
+  svg {
+    transform: rotate(90deg) scale(-1, 1);
+  }
+}
